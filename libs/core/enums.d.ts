@@ -18,4 +18,7 @@ declare const enum Hop {
     Astronomical
 }
 
+interface Options {
+    board?: string;
+}
 

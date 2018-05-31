@@ -1,17 +1,20 @@
 {
-    "name": "core",
-    "description": "A target sample for PXT",
-    "files": [
-        "README.md",
-        "pxt-core.d.ts",
-        "pxt-helpers.ts",
-        "enums.d.ts",
-        "sims.d.ts",
-        "ns.ts"
-    ],
-    "testFiles": [
-        "test.ts"
-    ],
-    "public": true,
-    "dependencies": {}
+  "name": "core",
+  "description": "A target sample for PXT",
+  "files": [
+    "README.md",
+    "pxt-core.d.ts",
+    "pxt-helpers.ts",
+    "enums.d.ts",
+    "sims.d.ts",
+    "ns.ts",
+    "obniz.ts",
+    "display.ts",
+    "io.ts"
+  ],
+  "testFiles": [
+    "test.ts"
+  ],
+  "public": true,
+  "dependencies": {}
 }

@@ -20,7 +20,11 @@
       "listsBlocks": false 
     },
     "simulator": {
-        "autoRun": true
+        "autoRun": true,
+        "debugger": true
+    },
+    "compile": {
+        "isNative": false
     },
     "appTheme": {
         "logoUrl": "https://github.com/Microsoft/pxt-sample",
