@@ -16,7 +16,7 @@
       "logicBlocks": true,
       "variablesBlocks": true,
       "textBlocks": false,
-      "functionBlocks": false,
+      "functionBlocks": true,
       "listsBlocks": false 
     },
     "simulator": {

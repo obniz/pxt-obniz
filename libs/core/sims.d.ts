@@ -37,7 +37,7 @@ declare namespace turtle {
 
     /**
      * Triggers when the turtle bumps a wall
-     * @param handler 
+     * @param handler
      */
     //% blockId=onBump block="on bump"
     //% shim=turtle::onBump
@@ -71,6 +71,31 @@ declare namespace console {
     //%
     //% shim=console::log
     function log(msg: string): void;
+
+}
+declare namespace display {
+    //% blockId=display_print block="print %text"
+    //% shim=display::print
+    function print(text: string): void;
+
+    //% blockId=display_clear block="clear"
+    //% shim=display::clear
+    function clear(): void;
+
+}
+declare namespace io {
+    //% blockId=io_output block="io set %pin %value"
+    //% pin.fieldEditor="gridpicker"
+    //% value.fieldEditor=toggleonoff
+    //% shim=io::output
+    function output(pin: ObnizIo, value: boolean): void;
+
+}
+declare namespace system {
+    //% blockId=system_wait block="wait %ms"
+    //% promise
+    //% shim=system::waitAsync promise
+    function wait(ms: number): any;
 
 }
     /**

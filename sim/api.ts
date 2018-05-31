@@ -48,7 +48,7 @@ namespace pxsim.turtle {
 
     /**
      * Triggers when the turtle bumps a wall
-     * @param handler 
+     * @param handler
      */
     //% blockId=onBump block="on bump"
     export function onBump(handler: RefAction) {
@@ -81,42 +81,82 @@ namespace pxsim.loops {
     }
 }
 
-function logMsg(m:string) { console.log(m) }
+function logMsg(m: string) {
+    console.log(m)
+}
 
 namespace pxsim.console {
     /**
      * Print out message
      */
     //% 
-    export function log(msg:string) {
+    export function log(msg: string) {
         logMsg("CONSOLE: " + msg)
         // why doesn't that work?
         board().writeSerial(msg + "\n")
     }
 }
 
+
+namespace pxsim.display {
+
+    //% blockId=display_print block="print %text"
+    export function print(text: string) {
+        board().obniz.display.print(text);
+    }
+
+    //% blockId=display_clear block="clear"
+    export function clear() {
+        board().obniz.display.clear();
+    }
+}
+
+namespace pxsim.io {
+
+
+    //% blockId=io_output block="io set %pin %value"
+    //% pin.fieldEditor="gridpicker"
+    //% value.fieldEditor=toggleonoff
+    export function output(pin: ObnizIo, value:boolean) {
+        board().obniz.getIO(pin).output(value);
+    }
+
+
+}
+
+namespace pxsim.system {
+
+    //% blockId=system_wait block="wait %ms"
+    //% promise
+    export function waitAsync(ms: number) {
+        return board().obniz.wait(ms) as Promise<any>;
+    }
+
+}
+
 namespace pxsim {
     /**
      * A ghost on the screen.
      */
-    //%
+        //%
     export class Sprite {
         /**
          * The X-coordiante
          */
-        //%
+            //%
         public x = 100;
-         /**
+        /**
          * The Y-coordiante
          */
-        //%
+            //%
         public y = 100;
         public angle = 90;
-        
+
         constructor() {
         }
-        
-        private foobar() {}
+
+        private foobar() {
+        }
 
         /**
          * Move the thing forward

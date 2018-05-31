@@ -1,5 +1,7 @@
 /// <reference path="../node_modules/pxt-core/built/pxtsim.d.ts"/>
 
+declare var Obniz:any;
+
 namespace pxsim {
     /**
      * This function gets called each time the program restarts
@@ -21,25 +23,32 @@ namespace pxsim {
      */
     export class Board extends pxsim.BaseBoard {
         public bus: EventBus;
-        public element : SVGSVGElement;
+        public element : any;
         public spriteElement: SVGCircleElement;
         public hareElement: SVGCircleElement;
         public sprite : Sprite;
         public hare: Sprite;
+        public obniz : any;
         
         constructor() {
             super();
             this.bus = new EventBus(runtime);
-            this.element = <SVGSVGElement><any>document.getElementById('svgcanvas');
-            this.spriteElement = <SVGCircleElement>this.element.getElementById('svgsprite');
-            this.hareElement = <SVGCircleElement>this.element.getElementById('svgsprite2');
-            this.sprite = new Sprite()
+            this.element = <any>document.getElementById('target');
+            this.spriteElement = <SVGCircleElement><any>document.getElementById('svgsprite');
+            this.hareElement = <SVGCircleElement><any>document.getElementById('svgsprite2');
+            this.sprite = new Sprite();
             this.hare = new Sprite();
         }
         
         initAsync(msg: pxsim.SimulatorRunMessage): Promise<void> {
+            if(this.obniz){
+                this.obniz.reset();
+                this.obniz.close();
+                this.obniz = null;
+            }
             document.body.innerHTML = ''; // clear children
             document.body.appendChild(this.element);
+            this.obniz = new Obniz("29603395");
 
             return Promise.resolve();
         }       
