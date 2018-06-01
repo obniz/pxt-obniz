@@ -2,6 +2,11 @@
 
 declare var Obniz:any;
 
+interface wiredObject{
+    options : {[key:string]:any};
+    target : any;
+}
+
 namespace pxsim {
     /**
      * This function gets called each time the program restarts
@@ -25,6 +30,7 @@ namespace pxsim {
         public bus: EventBus;
         public element : any;
         public obniz : any;
+        public cachedObjects : { [key: string]: wiredObject[]; } = {};
         
         constructor() {
             super();
@@ -38,9 +44,10 @@ namespace pxsim {
                 this.obniz.close();
                 this.obniz = null;
             }
+            this.cachedObjects = {};
             document.body.innerHTML = ''; // clear children
             document.body.appendChild(this.element);
-            this.obniz = new Obniz("29603395");
+            this.obniz = new Obniz("29603395",{binary:false});
 
             return Promise.resolve();
         }
@@ -51,11 +58,49 @@ namespace pxsim {
         }
 
         kill(){
+            super.kill();
             if(this.obniz){
                 this.obniz.reset();
                 this.obniz.close();
                 this.obniz = null;
             }
+            this.cachedObjects = {};
         }
+
+
+        wired(module:string, options:{ [key: string]: any;} ) : any{
+            if(this.cachedObjects[module] ){
+                for( let obj of this.cachedObjects[module]){
+                    if(this.optionsEqual(obj.options , options)){
+                        return obj.target;
+                    }
+                }
+            }
+            let obj =  this.obniz.wired(module,options);
+            this.cachedObjects[module] = this.cachedObjects[module] || [];
+
+            this.cachedObjects[module].push({
+                target : obj,
+                options: options
+            });
+
+            return obj;
+        }
+
+        optionsEqual(obj1:{[key:string]:any}, obj2:{[key:string]:any}) : boolean{
+            for (let key in obj1){
+                if(obj1[key] !== obj2[key]){
+                    return false;
+                }
+            }
+
+            for (let key in obj2){
+                if(obj1[key] !== obj2[key]){
+                    return false;
+                }
+            }
+            return true;
+        }
+
     }
 }

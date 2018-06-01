@@ -17,5 +17,12 @@ namespace pxsim.io {
 
 
 
-}
+    //% blockId=io_input block="input %pin"
+    //% pin.fieldEditor="gridpicker"
+    export function inputAsync(pin:ObnizIo ,value: boolean) : Promise<boolean> {
+        return board().obniz.getIO(pin).inputWait();
+    }
 
+
+
+}

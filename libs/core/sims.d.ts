@@ -81,6 +81,23 @@ declare namespace io {
     //% shim=io::output
     function output(pin: ObnizIo, value: boolean): void;
 
+    //% blockId=io_input block="input %pin"
+    //% pin.fieldEditor="gridpicker"
+    //% shim=io::inputAsync promise
+    function input(pin: ObnizIo, value: boolean): boolean;
+
+}
+declare namespace motor {
+    //% blockId=motor_forward block="forward %forward %back"
+    //% pin.fieldEditor="gridpicker"
+    //% shim=motor::forward
+    function forward(forward: ObnizIo, back: ObnizIo): void;
+
+    //% blockId=motor_reverse block="reverse %forward %back"
+    //% pin.fieldEditor="gridpicker"
+    //% shim=motor::reverse
+    function reverse(forward: ObnizIo, back: ObnizIo): void;
+
 }
 declare namespace system {
     //% blockId=system_wait block="wait %ms ms"
