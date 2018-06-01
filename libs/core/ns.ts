@@ -1,15 +1,6 @@
 /**
  * Basic functionalities.
  */
-//% color=#00BCD4 weight=100
-namespace turtle {
-
-}
-
-//% color=#D4BC00 weight=95
-namespace hare {
-
-}
 
 /**
  * Control flow
@@ -18,3 +9,14 @@ namespace hare {
 namespace control {
 
 }
+
+
+//% block=display
+namespace display {
+}
+
+//% color=#FF5722 weight=90
+namespace io {
+}
+
+namespace system{}

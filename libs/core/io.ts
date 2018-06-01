@@ -1,5 +1,0 @@
-
-//% block=io
-namespace io {
-
-}

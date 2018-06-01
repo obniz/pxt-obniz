@@ -1,49 +1,4 @@
 // Auto-generated from simulator. Do not edit.
-declare namespace hare {
-    /**
-     * This is hop
-     */
-    //% blockId="sampleHop" block="hop %hop on color %color=colorNumberPicker"
-    //% hop.fieldEditor="gridpicker"
-    //% shim=hare::hop
-    function hop(hop: Hop, color: number): void;
-
-    //% blockId=sampleOnLand block="on land"
-    //% optionalVariableArgs
-    //% shim=hare::onLand
-    function onLand(handler: (height: number, more: number, most: number) => void): void;
-
-}
-declare namespace turtle {
-    /**
-     * Moves the sprite forward
-     * @param steps number of steps to move, eg: 1
-     */
-    //% weight=90
-    //% blockId=sampleForward block="forward %steps"
-    //% shim=turtle::forwardAsync promise
-    function forward(steps: number): void;
-
-    /**
-     * Moves the sprite forward
-     * @param direction the direction to turn, eg: Direction.Left
-     * @param angle degrees to turn, eg:90
-     */
-    //% weight=85
-    //% blockId=sampleTurn block="turn %direction|by %angle degrees"
-    //% angle.min=-180 angle.max=180
-    //% shim=turtle::turnAsync promise
-    function turn(direction: Direction, angle: number): void;
-
-    /**
-     * Triggers when the turtle bumps a wall
-     * @param handler
-     */
-    //% blockId=onBump block="on bump"
-    //% shim=turtle::onBump
-    function onBump(handler: () => void): void;
-
-}
 declare namespace loops {
     /**
      * Repeats the code forever in the background. On each iteration, allows other code to run.
@@ -71,31 +26,6 @@ declare namespace console {
     //%
     //% shim=console::log
     function log(msg: string): void;
-
-}
-declare namespace display {
-    //% blockId=display_print block="print %text"
-    //% shim=display::print
-    function print(text: string): void;
-
-    //% blockId=display_clear block="clear"
-    //% shim=display::clear
-    function clear(): void;
-
-}
-declare namespace io {
-    //% blockId=io_output block="io set %pin %value"
-    //% pin.fieldEditor="gridpicker"
-    //% value.fieldEditor=toggleonoff
-    //% shim=io::output
-    function output(pin: ObnizIo, value: boolean): void;
-
-}
-declare namespace system {
-    //% blockId=system_wait block="wait %ms"
-    //% promise
-    //% shim=system::waitAsync promise
-    function wait(ms: number): any;
 
 }
     /**
@@ -132,6 +62,34 @@ declare namespace sprites {
     //% blockId="sampleCreate" block="createSprite"
     //% shim=sprites::createSprite
     function createSprite(): Sprite;
+
+}
+declare namespace display {
+    //% blockId=display_print block="print %text"
+    //% shim=display::print
+    function print(text: string): void;
+
+    //% blockId=display_clear block="clear"
+    //% shim=display::clear
+    function clear(): void;
+
+}
+declare namespace io {
+    //% blockId=io_output block="output %pin %value"
+    //% pin.fieldEditor="gridpicker"
+    //% value.fieldEditor=toggleonoff
+    //% shim=io::output
+    function output(pin: ObnizIo, value: boolean): void;
+
+}
+declare namespace system {
+    //% blockId=system_wait block="wait %ms ms"
+    //% shim=system::waitAsync promise
+    function wait(ms: number): void;
+
+    //% block="pause (ms) %pause" blockId=system_pause
+    //% shim=system::pauseAsync promise
+    function pause(ms: number): void;
 
 }
 

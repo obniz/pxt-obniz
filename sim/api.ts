@@ -1,63 +1,5 @@
 /// <reference path="../libs/core/enums.d.ts"/>
 
-namespace pxsim.hare {
-    /**
-     * This is hop
-     */
-    //% blockId="sampleHop" block="hop %hop on color %color=colorNumberPicker"
-    //% hop.fieldEditor="gridpicker"
-    export function hop(hop: Hop, color: number) {
-
-    }
-
-    //% blockId=sampleOnLand block="on land"
-    //% optionalVariableArgs
-    export function onLand(handler: (height: number, more: number, most: number) => void) {
-
-    }
-}
-
-namespace pxsim.turtle {
-    /**
-     * Moves the sprite forward
-     * @param steps number of steps to move, eg: 1
-     */
-    //% weight=90
-    //% blockId=sampleForward block="forward %steps"
-    export function forwardAsync(steps: number) {
-        return board().sprite.forwardAsync(steps)
-    }
-
-    /**
-     * Moves the sprite forward
-     * @param direction the direction to turn, eg: Direction.Left
-     * @param angle degrees to turn, eg:90
-     */
-    //% weight=85
-    //% blockId=sampleTurn block="turn %direction|by %angle degrees"
-    //% angle.min=-180 angle.max=180
-    export function turnAsync(direction: Direction, angle: number) {
-        let b = board();
-
-        if (direction == Direction.Left)
-            b.sprite.angle -= angle;
-        else
-            b.sprite.angle += angle;
-        return Promise.delay(400)
-    }
-
-    /**
-     * Triggers when the turtle bumps a wall
-     * @param handler
-     */
-    //% blockId=onBump block="on bump"
-    export function onBump(handler: RefAction) {
-        let b = board();
-
-        b.bus.listen("Turtle", "Bump", handler);
-    }
-}
-
 namespace pxsim.loops {
 
     /**
@@ -79,6 +21,7 @@ namespace pxsim.loops {
     export function pauseAsync(ms: number) {
         return Promise.delay(ms)
     }
+
 }
 
 function logMsg(m: string) {
@@ -98,41 +41,46 @@ namespace pxsim.console {
 }
 
 
-namespace pxsim.display {
+namespace pxsim.obniz {
+    //
+    // //% promise
+    // export function apiCallAsync(component: string, componentArgs: Options, fn: string, fnArgs: any ): Promise<void> {
+    //
+    //     return Promise.resolve();
+        //     const cArgs = (<any>componentArgs).toAny() as Options;
+        //     const obniz = board().obniz;
+        //     obniz[component][fn].apply(fnArgs);
+        //
+        //     return Promise.resolve();
+    // }
 
-    //% blockId=display_print block="print %text"
-    export function print(text: string) {
-        board().obniz.display.print(text);
-    }
+    //%
+    // export function apiCall(component: string, componentArgs: Options, fn: string, fnArgs: any) {
+    //
+    //     const cArgs = (<any>componentArgs).toAny() as Options;
+    //
+    //     const obniz = board().obniz;
+    //         obniz[component][fn].apply(obniz[component],fnArgs);
+    //     //
+    //     //     return Promise.resolve();
+    // }
+    //
+    // //%
+    // export function api(component: string, componentArgs: Options , fn: string, fnArgs: boolean[]){
+    //     debugger;
+    //     const obniz = board().obniz;
+    //     const cArgs = (<any>componentArgs).toAny() as Options;
+    //
+    //
+    //     obniz[component][fn].apply(obniz[component],fnArgs.data);
+    //
+    // }
 
-    //% blockId=display_clear block="clear"
-    export function clear() {
-        board().obniz.display.clear();
-    }
+
 }
 
-namespace pxsim.io {
 
 
-    //% blockId=io_output block="io set %pin %value"
-    //% pin.fieldEditor="gridpicker"
-    //% value.fieldEditor=toggleonoff
-    export function output(pin: ObnizIo, value:boolean) {
-        board().obniz.getIO(pin).output(value);
-    }
-
-
-}
-
-namespace pxsim.system {
-
-    //% blockId=system_wait block="wait %ms"
-    //% promise
-    export function waitAsync(ms: number) {
-        return board().obniz.wait(ms) as Promise<any>;
-    }
-
-}
 
 namespace pxsim {
     /**
