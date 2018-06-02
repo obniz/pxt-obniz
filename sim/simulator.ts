@@ -49,7 +49,9 @@ namespace pxsim {
             document.body.appendChild(this.element);
             this.obniz = new Obniz("29603395",{binary:false});
 
-            return Promise.resolve();
+            return new Promise((resolve)=>{
+                this.obniz.onconnect = resolve;
+            });
         }
 
 

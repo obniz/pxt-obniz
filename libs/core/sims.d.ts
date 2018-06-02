@@ -88,25 +88,36 @@ declare namespace io {
 
 }
 declare namespace motor {
-    //% blockId=motor_forward block="forward %forward %back"
-    //% pin.fieldEditor="gridpicker"
+    //% blockId=motor_forward block="motor %forward %back forward"
+    //% forward.fieldEditor="gridpicker"
+    //% back.fieldEditor="gridpicker"
     //% shim=motor::forward
     function forward(forward: ObnizIo, back: ObnizIo): void;
 
-    //% blockId=motor_reverse block="reverse %forward %back"
-    //% pin.fieldEditor="gridpicker"
+    //% blockId=motor_reverse block="motor %forwpard %back reverse"
+    //% forward.fieldEditor="gridpicker"
+    //% back.fieldEditor="gridpicker"
     //% shim=motor::reverse
     function reverse(forward: ObnizIo, back: ObnizIo): void;
 
-}
-declare namespace system {
-    //% blockId=system_wait block="wait %ms ms"
-    //% shim=system::waitAsync promise
-    function wait(ms: number): void;
+    //% blockId=motor_stop block="motor %forward %back stop"
+    //% forward.fieldEditor="gridpicker"
+    //% back.fieldEditor="gridpicker"
+    //% shim=motor::stop
+    function stop(forward: ObnizIo, back: ObnizIo): void;
 
-    //% block="pause (ms) %pause" blockId=system_pause
-    //% shim=system::pauseAsync promise
-    function pause(ms: number): void;
+    //% blockId=motor_move block="motor %forward %back move to %dir"
+    //% forward.fieldEditor="gridpicker"
+    //% back.fieldEditor="gridpicker"
+    //% shim=motor::move
+    function move(forward: ObnizIo, back: ObnizIo, dir: boolean): void;
+
+    //% blockId=motor_power block="motor %forward %back set power  %power"
+    //% forward.fieldEditor="gridpicker"
+    //% back.fieldEditor="gridpicker"
+    //% value.min="0" value.max=100
+    //% shim=motor::power
+    function power(forward: ObnizIo, back: ObnizIo, value: number): void;
 
 }
 
