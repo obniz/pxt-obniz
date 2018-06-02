@@ -26,3 +26,15 @@ declare const enum ObnizIo {
     io11 = 11,
 }
 
+declare const enum IoInputEvent {
+    something,
+    high ,
+    low
+}
+
+declare const enum SwitchEvent {
+    push,
+    right,
+    left
+}
+

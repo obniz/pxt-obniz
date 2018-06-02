@@ -47,7 +47,7 @@ namespace pxsim {
             this.cachedObjects = {};
             document.body.innerHTML = ''; // clear children
             document.body.appendChild(this.element);
-            this.obniz = new Obniz("29603395",{binary:false});
+            this.obniz = new Obniz("29603395");
 
             return new Promise((resolve)=>{
                 this.obniz.onconnect = ()=>{

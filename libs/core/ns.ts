@@ -2,22 +2,32 @@
  * Basic functionalities.
  */
 
-/**
- * Control flow
- */
-//% color=#FF5722 weight=90
-namespace control {
 
-}
-
-
-//% block=display
+//% block=Display
 namespace display {
 }
 
-//% color=#FF5722 weight=90
+
+//% block=console
+namespace console {
+}
+
+//% weight=91
+//% block=io
 namespace io {}
 
 
 
 namespace motor{}
+
+//% weight=80
+//% block="LED"
+namespace led {
+
+}
+//% weight=92
+//% block="Switch"
+namespace switch_{}
+
+
+
