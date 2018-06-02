@@ -8,7 +8,7 @@ You can embed code snippets and [more](https://makecode.com/markdown)
 
 ```blocks
 loops.forever(() => {
-    turtle.turn(Direction.Left, 10);
-    turtle.forward(1);
+    
+    
 });
 ```

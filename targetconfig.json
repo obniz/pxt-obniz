@@ -1,10 +1,4 @@
 {
-    "packages": {
-        "approvedOrgs": [
-        ],
-        "approvedRepos": [
-        ]
-    },
     "galleries": {
     }
 }

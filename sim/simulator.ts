@@ -50,7 +50,11 @@ namespace pxsim {
             this.obniz = new Obniz("29603395",{binary:false});
 
             return new Promise((resolve)=>{
-                this.obniz.onconnect = resolve;
+                this.obniz.onconnect = ()=>{
+                    this.obniz.reset();
+                    resolve();
+
+                }
             });
         }
 

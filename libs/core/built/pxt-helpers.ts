@@ -21,6 +21,17 @@ namespace helpers {
         return arr.removeAt(0);
     }
 
+    export function arrayJoin<T>(arr: T[], sep: string): string {
+        let r = "";
+        let len = arr.length // caching this seems to match V8
+        for (let i = 0; i < len; ++i) {
+            if (i > 0 && sep)
+                r += sep;
+            r += arr[i] || "";
+        }
+        return r;
+    }
+
     /*TODO: Enable this multiple value unshift, after rest is enabled in our compiler.
         export function arrayUnshift<T>(arr: T[], ...values: T[]) : number {
             for(let i = values.length; i > 0; --i) {
@@ -73,6 +84,29 @@ namespace helpers {
             res.push(callbackfn(arr[i], i))
         }
         return res
+    }
+
+    export function arraySome<T>(arr: T[], callbackfn: (value: T, index: number) => boolean): boolean {
+        let len = arr.length // caching this seems to match V8
+        for (let i = 0; i < len; ++i)
+            if (callbackfn(arr[i], i))
+                return true;
+        return false;
+    }
+
+    export function arrayEvery<T>(arr: T[], callbackfn: (value: T, index: number) => boolean): boolean {
+        let len = arr.length // caching this seems to match V8
+        for (let i = 0; i < len; ++i)
+            if (!callbackfn(arr[i], i))
+                return false;
+        return true;
+    }
+
+    export function arrayForEach<T>(arr: T[], callbackfn: (value: T, index: number) => void): void {
+        let len = arr.length // caching this seems to match V8
+        for (let i = 0; i < len; ++i) {
+            callbackfn(arr[i], i);
+        }
     }
 
     export function arrayFilter<T>(arr: T[], callbackfn: (value: T, index: number) => boolean): T[] {
@@ -156,5 +190,18 @@ namespace Math {
     export function min(a: number, b: number): number {
         if (a <= b) return a;
         return b;
+    }
+
+    /**
+     * Rounds ``x`` to a number with the given number of ``digits``
+     * @param x the number to round
+     * @param digits the number of resulting digits
+     */
+    //%
+    export function roundWithPrecision(x: number, digits: number): number {
+        digits = digits | 0;
+        if (digits <= 0) return Math.round(x);
+        let d = Math.pow(10, digits);
+        return Math.round(x * d) / d;
     }
 }
