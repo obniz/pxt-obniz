@@ -1,11 +1,9 @@
 /// <reference path="../node_modules/pxt-core/built/pxtsim.d.ts"/>
+/// <reference path="./enums.d.ts"/>
+
+
 
 declare var Obniz:any;
-
-interface wiredObject{
-    options : {[key:string]:any};
-    target : any;
-}
 
 namespace pxsim {
     /**
@@ -47,7 +45,7 @@ namespace pxsim {
             this.cachedObjects = {};
             document.body.innerHTML = ''; // clear children
             document.body.appendChild(this.element);
-            this.obniz = new Obniz("29603395");
+            this.obniz = new Obniz("OBNIZ_ID_HERE");
 
             return new Promise((resolve)=>{
                 this.obniz.onconnect = ()=>{

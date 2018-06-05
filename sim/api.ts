@@ -6,10 +6,11 @@ namespace pxsim.loops {
      * Repeats the code forever in the background. On each iteration, allows other code to run.
      * @param body the code to repeat
      */
-    //% help=functions/forever weight=55 blockGap=8
+    //% help=functions/forever
     //% blockId=device_forever block="forever" 
-    export function forever(body: RefAction): void {
-        thread.forever(body)
+    export function foreverAsync(body: RefAction)  {
+        thread.forever(body);
+        return Promise.delay(1);
     }
 
     /**

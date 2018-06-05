@@ -1,8 +1,16 @@
 /// <reference path="../libs/core/enums.d.ts"/>
 
+/**
+ * AD
+ */
 
 
-namespace pxsim.switch_ {
+//% block=ad
+namespace pxsim.ad {
+
+
+
+
 
 
 }

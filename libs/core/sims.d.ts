@@ -4,9 +4,9 @@ declare namespace loops {
      * Repeats the code forever in the background. On each iteration, allows other code to run.
      * @param body the code to repeat
      */
-    //% help=functions/forever weight=55 blockGap=8
+    //% help=functions/forever
     //% blockId=device_forever block="forever"
-    //% shim=loops::forever
+    //% shim=loops::foreverAsync promise
     function forever(body: () => void): void;
 
     /**
@@ -26,6 +26,27 @@ declare namespace console {
     //%
     //% shim=console::log
     function log(msg: string): void;
+
+}
+declare namespace button {
+    //% blockId=switch_event block="on switch change to %event"
+    //% group="embedded switch"
+    //% shim=button::switchChangeEvent
+    function switchChangeEvent(event: SwitchEvent, handler: () => void): void;
+
+    //% blockId=button_is_pressed block="button (signal pin:%signal, gnd pin:%gnd) is pressed"
+    //% signal.fieldEditor="gridpicker"
+    //% gnd.fieldEditor="gridpicker"
+    //% group="button"
+    //% shim=button::isPressedAsync promise
+    function isPressed(signal: ObnizIo, gnd: ObnizIo): boolean;
+
+    //% signal.fieldEditor="gridpicker"
+    //% gnd.fieldEditor="gridpicker"
+    //% blockId=button_event block="on button (signal pin:%signal, gnd pin:%gnd) change to %event"
+    //% group="button"
+    //% shim=button::onChangeEvent
+    function onChangeEvent(signal: ObnizIo, gnd: ObnizIo, event: ButtonEvent, handler: () => void): void;
 
 }
 declare namespace display {
@@ -63,6 +84,7 @@ declare namespace io {
     //% blockId=io_output block="output %pin %value"
     //% pin.fieldEditor="gridpicker"
     //% value.fieldEditor=toggleonoff
+    //% group="digital"
     //% shim=io::output
     function output(pin: ObnizIo, value: boolean): void;
 
@@ -72,6 +94,7 @@ declare namespace io {
      */
     //% blockId=io_input_wait block="input %pin"
     //% pin.fieldEditor="gridpicker"
+    //% group="digital"
     //% shim=io::inputAsync promise
     function input(pin: ObnizIo, value: boolean): boolean;
 
@@ -82,8 +105,15 @@ declare namespace io {
      */
     //% blockId=io_input_event block="input %pin on change to %event"
     //% pin.fieldEditor="gridpicker"
+    //% group="digital"
     //% shim=io::inputTrigerOnEvent
     function inputTrigerOnEvent(pin: ObnizIo, event: IoInputEvent, handler: () => void): void;
+
+    //% blockId=ad_get block="get %pin analog voltage "
+    //% pin.fieldEditor="gridpicker"
+    //% group="analog"
+    //% shim=io::getAsync promise
+    function get(pin: ObnizIo): number;
 
 }
 declare namespace LED {
@@ -114,50 +144,43 @@ declare namespace LED {
 
 }
 declare namespace motor {
-    /**
-     * Rotate motor forward
-     * @param forward motor pin no to forward, eg: ObnizIo.io0
-     * @param back motor pin no to back, eg: ObnizIo.io1
-     */
-    //% blockId=motor_forward block="motor %forward %back forward"
-    //% forward.fieldEditor="gridpicker"
-    //% back.fieldEditor="gridpicker"
-    //% shim=motor::forward
-    function forward(forward: ObnizIo, back: ObnizIo): void;
-
-    /**
-     * Rotate motor back
-     * @param forward motor pin no to forward, eg: ObnizIo.io0
-     * @param back motor pin no to back, eg: ObnizIo.io1
-     */
-    //% blockId=motor_reverse block="motor %forwpard %back reverse"
-    //% forward.fieldEditor="gridpicker" forward.default=io0
-    //% back.fieldEditor="gridpicker" forward.default=io1
-    //% shim=motor::reverse
-    function reverse(forward: ObnizIo, back: ObnizIo): void;
-
-    /**
-     * Stop motor
-     * @param forward motor pin no to forward, eg: ObnizIo.io0
-     * @param back motor pin no to back, eg: ObnizIo.io1
-     */
-    //% blockId=motor_stop block="motor %forward %back stop"
-    //% forward.fieldEditor="gridpicker"
-    //% back.fieldEditor="gridpicker"
-    //% shim=motor::stop
-    function stop(forward: ObnizIo, back: ObnizIo): void;
-
+    //
+    // /**
+    //  * Rotate motor forward
+    //  * @param forward motor pin no to forward, eg: ObnizIo.io0
+    //  * @param back motor pin no to back, eg: ObnizIo.io1
+    //  */
+    // //% blockId=motor_forward block="motor (forawrd pin:%forward, back pin:%back) forward"
+    // //% forward.fieldEditor="gridpicker"
+    // //% back.fieldEditor="gridpicker"
+    // export function forward(forward:ObnizIo , back:ObnizIo) {
+    //     board().wired("DCMotor",{forward:forward, back:back}).forward();
+    // }
+    //
+    // /**
+    //  * Rotate motor back
+    //  * @param forward motor pin no to forward, eg: ObnizIo.io0
+    //  * @param back motor pin no to back, eg: ObnizIo.io1
+    //  */
+    // //% blockId=motor_reverse block="motor (forawrd pin:%forward, back pin:%back) reverse"
+    // //% forward.fieldEditor="gridpicker" forward.default=io0
+    // //% back.fieldEditor="gridpicker" forward.default=io1
+    // export function reverse(forward:ObnizIo , back:ObnizIo) {
+    //     board().wired("DCMotor",{forward:forward, back:back}).reverse();
+    // }
+    //
+    //
     /**
      * Rotate motor to you want
      * @param forward motor pin no to forward, eg: ObnizIo.io0
      * @param back motor pin no to back, eg: ObnizIo.io1
      * @param dir motor rotate direction, eg: true
      */
-    //% blockId=motor_move block="motor %forward %back move to %dir"
+    //% blockId=motor_move block="motor (forawrd pin:%forward, back pin:%back) move to %dir"
     //% forward.fieldEditor="gridpicker"
     //% back.fieldEditor="gridpicker"
     //% shim=motor::move
-    function move(forward: ObnizIo, back: ObnizIo, dir: boolean): void;
+    function move(forward: ObnizIo, back: ObnizIo, dir: MotorDirection): void;
 
     /**
      * Change motor power
@@ -165,18 +188,23 @@ declare namespace motor {
      * @param back motor pin no to back, eg: ObnizIo.io1
      * @param value motor power, eg: 50
      */
-    //% blockId=motor_power block="motor %forward %back set power  %power"
+    //% blockId=motor_power block="motor (forawrd pin:%forward, back pin:%back) set power  %power"
     //% forward.fieldEditor="gridpicker"
     //% back.fieldEditor="gridpicker"
     //% value.min="0" value.max=100
     //% shim=motor::power
     function power(forward: ObnizIo, back: ObnizIo, value: number): void;
 
-}
-declare namespace switch_ {
-    //% blockId=switch_event block="on switch change to %event"
-    //% shim=switch_::switchChangeEvent
-    function switchChangeEvent(event: SwitchEvent, handler: () => void): void;
+    /**
+     * Stop motor
+     * @param forward motor pin no to forward, eg: ObnizIo.io0
+     * @param back motor pin no to back, eg: ObnizIo.io1
+     */
+    //% blockId=motor_stop block="motor (forawrd pin:%forward, back pin:%back) stop"
+    //% forward.fieldEditor="gridpicker"
+    //% back.fieldEditor="gridpicker"
+    //% shim=motor::stop
+    function stop(forward: ObnizIo, back: ObnizIo): void;
 
 }
 

@@ -16,6 +16,7 @@ namespace pxsim.io {
     //% blockId=io_output block="output %pin %value"
     //% pin.fieldEditor="gridpicker"
     //% value.fieldEditor=toggleonoff
+    //% group="digital"
     export function output(pin:ObnizIo ,value: boolean) {
         board().obniz.getIO(pin).output(value);
     }
@@ -28,6 +29,7 @@ namespace pxsim.io {
      */
     //% blockId=io_input_wait block="input %pin"
     //% pin.fieldEditor="gridpicker"
+    //% group="digital"
     export function inputAsync(pin:ObnizIo ,value: boolean) : Promise<boolean> {
         return board().obniz.getIO(pin).inputWait();
     }
@@ -42,6 +44,7 @@ namespace pxsim.io {
      */
     //% blockId=io_input_event block="input %pin on change to %event"
     //% pin.fieldEditor="gridpicker"
+    //% group="digital"
     export function inputTrigerOnEvent(pin:ObnizIo , event:IoInputEvent,  handler:RefAction ) {
         let eventId = JSON.stringify({module:"io", "options":{"io":pin} });
 
@@ -55,6 +58,14 @@ namespace pxsim.io {
                 board().bus.queue(eventId, IoInputEvent.low);
             }
         });
+    }
+
+
+    //% blockId=ad_get block="get %pin analog voltage "
+    //% pin.fieldEditor="gridpicker"
+    //% group="analog"
+    export function getAsync(pin:ObnizIo):Promise<number> {
+        return board().obniz.getAD(pin).getWait();
     }
 
 

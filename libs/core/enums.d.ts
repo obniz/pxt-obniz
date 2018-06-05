@@ -38,3 +38,20 @@ declare const enum SwitchEvent {
     left
 }
 
+declare const enum ButtonEvent {
+    push,
+    release,
+    change
+}
+
+declare const enum MotorDirection {
+    forward,
+    back
+}
+
+declare class wiredObject{
+    public  options : {[key:string]:any};
+    public  target : {};
+}
+
+declare class Motor extends  wiredObject{}
