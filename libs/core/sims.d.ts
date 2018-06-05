@@ -123,7 +123,7 @@ declare namespace LED {
      * @param cathode target io pin, eg: ObnizIo.io1
      * @param value output voltage, eg: true
      */
-    //% blockId=LED_output block="LED  %anode %cathode turn %value"
+    //% blockId=LED_output block="LED (anode pin:%anode , cathod pin: %cathode ) turn %value"
     //% anode.fieldEditor="gridpicker"
     //% cathode.fieldEditor="gridpicker"
     //% value.fieldEditor=toggleonoff
@@ -136,7 +136,7 @@ declare namespace LED {
      * @param cathode target io pin, eg: ObnizIo.io1
      * @param ms interval (ms), eg: 500
      */
-    //% blockId=LED_blink block="LED %anode %cathode blink with interval %ms (ms)"
+    //% blockId=LED_blink block="LED (anode pin:%anode , cathod pin: %cathode )  blink with interval %ms ms"
     //% anode.fieldEditor="gridpicker"
     //% cathode.fieldEditor="gridpicker"
     //% shim=LED::blink
@@ -179,6 +179,7 @@ declare namespace motor {
     //% blockId=motor_move block="motor (forawrd pin:%forward, back pin:%back) move to %dir"
     //% forward.fieldEditor="gridpicker"
     //% back.fieldEditor="gridpicker"
+    //% group="DCMotor"
     //% shim=motor::move
     function move(forward: ObnizIo, back: ObnizIo, dir: MotorDirection): void;
 
@@ -192,6 +193,7 @@ declare namespace motor {
     //% forward.fieldEditor="gridpicker"
     //% back.fieldEditor="gridpicker"
     //% value.min="0" value.max=100
+    //% group="DCMotor"
     //% shim=motor::power
     function power(forward: ObnizIo, back: ObnizIo, value: number): void;
 
@@ -203,8 +205,24 @@ declare namespace motor {
     //% blockId=motor_stop block="motor (forawrd pin:%forward, back pin:%back) stop"
     //% forward.fieldEditor="gridpicker"
     //% back.fieldEditor="gridpicker"
+    //% group="DCMotor"
     //% shim=motor::stop
     function stop(forward: ObnizIo, back: ObnizIo): void;
+
+    /**
+     * Rotate Servo motor
+     * @param signal motor pin no to signal, eg: ObnizIo.io0
+     * @param vcc motor pin no to vcc, eg: ObnizIo.io1
+     * @param gnd motor pin no to gnd, eg: ObnizIo.io2
+     * @param angle degree to rotate, eg: 90
+     */
+    //% blockId=servo_angle block="servo (signal pin:%signal, vcc pin:%vcc, gnd pin:%gnd) %angle degree"
+    //% forward.fieldEditor="gridpicker"
+    //% back.fieldEditor="gridpicker"
+    //% angle.min=0 angle.max=180
+    //% group="ServoMotor"
+    //% shim=motor::angle
+    function angle(signal: ObnizIo, vcc: ObnizIo, gnd: ObnizIo, angle: number): void;
 
 }
 

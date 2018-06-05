@@ -29,11 +29,13 @@ namespace pxsim {
         public element : any;
         public obniz : any;
         public cachedObjects : { [key: string]: wiredObject[]; } = {};
+        public obnizId:string;
         
         constructor() {
             super();
             this.bus = new EventBus(runtime);
             this.element = <any>document.getElementById('target');
+            this.obnizId = null;
         }
         
         initAsync(msg: pxsim.SimulatorRunMessage): Promise<void> {
@@ -45,7 +47,8 @@ namespace pxsim {
             this.cachedObjects = {};
             document.body.innerHTML = ''; // clear children
             document.body.appendChild(this.element);
-            this.obniz = new Obniz("OBNIZ_ID_HERE");
+            this.obnizId= msg.options.player;
+            this.obniz = new Obniz(this.obnizId);
 
             return new Promise((resolve)=>{
                 this.obniz.onconnect = ()=>{

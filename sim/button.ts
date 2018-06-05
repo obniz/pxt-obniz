@@ -20,7 +20,12 @@ namespace pxsim.button {
         };
     }
 
-
+    /**
+     *
+     * @param  signal signal pin, eg: ObnizIo.io0
+     * @param  gnd  gnd pin, eg: ObnizIo.io1
+     * @returns Promise<boolean>
+     */
    //% blockId=button_is_pressed block="button (signal pin:%signal, gnd pin:%gnd) is pressed"
     //% signal.fieldEditor="gridpicker"
     //% gnd.fieldEditor="gridpicker"
@@ -29,6 +34,12 @@ namespace pxsim.button {
         return board().wired("Button",{signal, gnd}).isPressedWait();
     }
 
+
+    /**
+     *
+     * @param  signal signal pin, eg: ObnizIo.io0
+     * @param  gnd  gnd pin, eg: ObnizIo.io1
+     */
     //% signal.fieldEditor="gridpicker"
     //% gnd.fieldEditor="gridpicker"
     //% blockId=button_event block="on button (signal pin:%signal, gnd pin:%gnd) change to %event"
