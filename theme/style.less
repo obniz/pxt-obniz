@@ -1,4 +1,7 @@
 
+@mainBaseColor : #0CB3D7;
+@mainLightColor : #EEF8F9;
+
 
 /* Import all components */
 @import 'pxtsemantic';
@@ -28,6 +31,53 @@
 .ui.dropdown > .left.menu {
     left: auto !important;
     right: 0 !important
+}
+
+.projectsdialog .getting-started-segment{
+    background-position: center;
+    background-size: contain;
+}
+
+/*
+.ui.inverted.menu {
+    background: @mainBaseColor;
+}
+
+.menubar .ui.menu.inverted.fixed .ui.item.editor-menuitem .active.item{
+    background: @mainBaseColor;
+}
+*/
+
+.ui.positive.button, .ui.positive.buttons .button{
+    background-color: @mainBaseColor;
+}
+.ui.green.button, .ui.green.buttons .button{
+    background-color: @mainBaseColor;
+}
+
+div.ui.card.link.newprojectcard{
+    background-color: @mainBaseColor !important;
+}
+
+.ui.segment{
+    background-color: #edfbfc;
+
+}
+.ui.grid {
+    background-color: @mainLightColor;
+}
+#downloadArea {
+    background-color: @mainLightColor;
+}
+.ui.inverted.segment, .ui.primary.inverted.segment {
+    background-color: @mainLightColor;
+}
+
+.projectsdialog .ui.segment.tabsegment {
+    background-color: @mainLightColor;
+}
+.projectsdialog .detailview.visible .ui.grid {
+    background-color: @mainLightColor;
 }
 
 /* Mobile */
