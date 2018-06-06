@@ -26,7 +26,7 @@ namespace pxsim {
      */
     export class Board extends pxsim.BaseBoard {
         public bus: EventBus;
-        public element : any;
+        // public element : any;
         public obniz : any;
         public cachedObjects : { [key: string]: wiredObject[]; } = {};
         public obnizId:string;
@@ -34,7 +34,7 @@ namespace pxsim {
         constructor() {
             super();
             this.bus = new EventBus(runtime);
-            this.element = <any>document.getElementById('target');
+            // this.element = <any>document.getElementById('target');
             this.obnizId = null;
         }
         
@@ -45,8 +45,8 @@ namespace pxsim {
                 this.obniz = null;
             }
             this.cachedObjects = {};
-            document.body.innerHTML = ''; // clear children
-            document.body.appendChild(this.element);
+            document.body.innerHTML = '<div id="target"><div id="obniz-debug"></div></div>'; // clear children
+            // document.body.appendChild(this.element);
             this.obnizId= msg.options.player;
             this.obniz = new Obniz(this.obnizId);
 

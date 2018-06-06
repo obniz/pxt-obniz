@@ -34,6 +34,12 @@ declare namespace button {
     //% shim=button::switchChangeEvent
     function switchChangeEvent(event: SwitchEvent, handler: () => void): void;
 
+    /**
+     *
+     * @param  signal signal pin, eg: ObnizIo.io0
+     * @param  gnd  gnd pin, eg: ObnizIo.io1
+     * @returns Promise<boolean>
+     */
     //% blockId=button_is_pressed block="button (signal pin:%signal, gnd pin:%gnd) is pressed"
     //% signal.fieldEditor="gridpicker"
     //% gnd.fieldEditor="gridpicker"
@@ -41,6 +47,11 @@ declare namespace button {
     //% shim=button::isPressedAsync promise
     function isPressed(signal: ObnizIo, gnd: ObnizIo): boolean;
 
+    /**
+     *
+     * @param  signal signal pin, eg: ObnizIo.io0
+     * @param  gnd  gnd pin, eg: ObnizIo.io1
+     */
     //% signal.fieldEditor="gridpicker"
     //% gnd.fieldEditor="gridpicker"
     //% blockId=button_event block="on button (signal pin:%signal, gnd pin:%gnd) change to %event"
@@ -217,8 +228,9 @@ declare namespace motor {
      * @param angle degree to rotate, eg: 90
      */
     //% blockId=servo_angle block="servo (signal pin:%signal, vcc pin:%vcc, gnd pin:%gnd) %angle degree"
-    //% forward.fieldEditor="gridpicker"
-    //% back.fieldEditor="gridpicker"
+    //% signal.fieldEditor="gridpicker"
+    //% vcc.fieldEditor="gridpicker"
+    //% gnd.fieldEditor="gridpicker"
     //% angle.min=0 angle.max=180
     //% group="ServoMotor"
     //% shim=motor::angle

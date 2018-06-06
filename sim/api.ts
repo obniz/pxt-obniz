@@ -8,9 +8,10 @@ namespace pxsim.loops {
      */
     //% help=functions/forever
     //% blockId=device_forever block="forever" 
-    export function foreverAsync(body: RefAction)  {
+    export function foreverAsync(body: RefAction) : Promise<void>{
         thread.forever(body);
-        return Promise.delay(1);
+        return board().obniz.pingWait().then();
+        // return Promise.delay(1);
     }
 
     /**

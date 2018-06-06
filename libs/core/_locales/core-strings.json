@@ -35,6 +35,7 @@
   "button.isPressed|block": "button (signal pin:%signal, gnd pin:%gnd) is pressed",
   "button.onChangeEvent|block": "on button (signal pin:%signal, gnd pin:%gnd) change to %event",
   "button.switchChangeEvent|block": "on switch change to %event",
+  "button|block": "Button",
   "console|block": "console",
   "display.clear|block": "clear",
   "display.print_num|block": "print number %text",

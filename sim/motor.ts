@@ -87,8 +87,9 @@ namespace pxsim.motor {
      * @param angle degree to rotate, eg: 90
      */
     //% blockId=servo_angle block="servo (signal pin:%signal, vcc pin:%vcc, gnd pin:%gnd) %angle degree"
-    //% forward.fieldEditor="gridpicker"
-    //% back.fieldEditor="gridpicker"
+    //% signal.fieldEditor="gridpicker"
+    //% vcc.fieldEditor="gridpicker"
+    //% gnd.fieldEditor="gridpicker"
     //% angle.min=0 angle.max=180
     //% group="ServoMotor"
     export function angle(signal:ObnizIo , vcc:ObnizIo, gnd:ObnizIo, angle:number) {
