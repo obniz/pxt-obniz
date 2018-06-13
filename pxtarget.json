@@ -46,6 +46,7 @@
         "monacoToolbox": true,
         "invertedMenu": true,
         "showHomeScreen": true,
+        "extendEditor": true,
         "homeScreenHero": "./static/hero.png",        
         "blocklyOptions": { 
             "grid": {
