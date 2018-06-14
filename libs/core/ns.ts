@@ -47,6 +47,15 @@ namespace motor{
 
 
 
+//% weight=96
+//% block="Sensor"
+//% color=#1dccd6
+//% icon="\uf2c9"
+namespace sensor {
+
+}
+
+
 
 //% block=console
 namespace console {

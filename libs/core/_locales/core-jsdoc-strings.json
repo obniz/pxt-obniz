@@ -155,5 +155,17 @@
   "motor.stop": "Stop motor",
   "motor.stop|param|back": "motor pin no to back, eg: ObnizIo.io1",
   "motor.stop|param|forward": "motor pin no to forward, eg: ObnizIo.io0",
-  "parseInt": "Convert a string to an integer."
+  "parseInt": "Convert a string to an integer.",
+  "sensor.distanceOnChange": "* @param  vcc pin0 pin, eg: ObnizIo.io0",
+  "sensor.distanceOnChange|param|gnd": "pin1 pin, eg: ObnizIo.io1",
+  "sensor.distanceOnChange|param|signal": "pin2 pin, eg: ObnizIo.io2",
+  "sensor.distanceValue": "* @param  vcc  pin0 pin, eg: ObnizIo.io0",
+  "sensor.distanceValue|param|gnd": "pin1 pin, eg: ObnizIo.io1",
+  "sensor.distanceValue|param|signal": "pin2 pin, eg: ObnizIo.io2",
+  "sensor.potentiometerOnChange": "* @param  pin0 pin0 pin, eg: ObnizIo.io0",
+  "sensor.potentiometerOnChange|param|pin1": "pin1 pin, eg: ObnizIo.io1",
+  "sensor.potentiometerOnChange|param|pin2": "pin2 pin, eg: ObnizIo.io2",
+  "sensor.potentiometerValue": "* @param  pin0  pin0 pin, eg: ObnizIo.io0",
+  "sensor.potentiometerValue|param|pin1": "pin1 pin, eg: ObnizIo.io1",
+  "sensor.potentiometerValue|param|pin2": "pin2 pin, eg: ObnizIo.io2"
 }

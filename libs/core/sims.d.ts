@@ -237,5 +237,67 @@ declare namespace motor {
     function angle(signal: ObnizIo, vcc: ObnizIo, gnd: ObnizIo, angle: number): void;
 
 }
+declare namespace sensor {
+    /**
+     *
+     * @param  pin0 pin0 pin, eg: ObnizIo.io0
+     * @param  pin1  pin1 pin, eg: ObnizIo.io1
+     * @param  pin2  pin2 pin, eg: ObnizIo.io2
+     * @param  handler
+     */
+    //% blockId=sensor_potentiometer_on_change block="on potentiometer (pin0:%pin0, pin1:%pin1, pin2:%pin2) value change"
+    //% pin0.fieldEditor="gridpicker"
+    //% pin1.fieldEditor="gridpicker"
+    //% pin2.fieldEditor="gridpicker"
+    //% group="Potentiometer"
+    //% shim=sensor::potentiometerOnChange
+    function potentiometerOnChange(pin0: ObnizIo, pin1: ObnizIo, pin2: ObnizIo, handler: () => void): void;
+
+    /**
+     *
+     * @param  pin0  pin0 pin, eg: ObnizIo.io0
+     * @param  pin1  pin1 pin, eg: ObnizIo.io1
+     * @param  pin2  pin2 pin, eg: ObnizIo.io2
+     *
+     */
+    //% blockId=sensor_potentiometer_value block="get potentiometer (pin0:%pin0, pin1:%pin1, pin2:%pin2) value"
+    //% pin0.fieldEditor="gridpicker"
+    //% pin1.fieldEditor="gridpicker"
+    //% pin2.fieldEditor="gridpicker"
+    //% group="Potentiometer"
+    //% shim=sensor::potentiometerValue
+    function potentiometerValue(pin0: ObnizIo, pin1: ObnizIo, pin2: ObnizIo): number;
+
+    /**
+     *
+     * @param  vcc pin0 pin, eg: ObnizIo.io0
+     * @param  gnd  pin1 pin, eg: ObnizIo.io1
+     * @param  signal  pin2 pin, eg: ObnizIo.io2
+     * @param  handler
+     */
+    //% blockId=sensor_distance_on_change block="on distance (vcc:%gnd, vcc:%vcc, signal:%signal) change"
+    //% vcc.fieldEditor="gridpicker"
+    //% gnd.fieldEditor="gridpicker"
+    //% signal.fieldEditor="gridpicker"
+    //% group="distance (GP2Y0A21YK0F)"
+    //% shim=sensor::distanceOnChange
+    function distanceOnChange(vcc: ObnizIo, gnd: ObnizIo, signal: ObnizIo, handler: () => void): void;
+
+    /**
+     *
+     * @param  vcc  pin0 pin, eg: ObnizIo.io0
+     * @param  gnd  pin1 pin, eg: ObnizIo.io1
+     * @param  signal  pin2 pin, eg: ObnizIo.io2
+     *
+     */
+    //% blockId=sensor_distance_value block="get distance (vcc:%gnd, vcc:%vcc, signal:%signal) value(mm)"
+    //% vcc.fieldEditor="gridpicker"
+    //% gnd.fieldEditor="gridpicker"
+    //% signal.fieldEditor="gridpicker"
+    //% group="distance (GP2Y0A21YK0F)"
+    //% shim=sensor::distanceValueAsync promise
+    function distanceValue(vcc: ObnizIo, gnd: ObnizIo, signal: ObnizIo): number;
+
+}
 
 // Auto-generated. Do not edit. Really.
