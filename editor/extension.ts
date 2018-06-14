@@ -40,6 +40,7 @@ var href = "";
 function onDomChanged() {
     addChangeObnizIdMenu();
     showObnizId();
+    addObnizLogo();
     addClickEvents();
     removeRightHeaderSpace();
     if (href !== location.href) {
@@ -76,6 +77,32 @@ function showChangeObnizId() {
     });
 }
 
+function addObnizLogo(){
+
+    if (document.getElementById("obniz_link")) {
+        return;
+    }
+    let target = document.querySelector("#mainmenu div.left.menu");
+    if (!target) {
+        target = document.querySelector("#homemenu div.left.menu");
+        if(!target){
+            return;
+
+        }
+    }
+
+    var html = `<a id="obniz_link" aria-label="obniz Logo" role="menuitem" href="https://obniz.io" target="blank" class="ui item logo brand" tabindex="0">
+<img class="ui logo  portrait hide" src="static/logo.svg" alt="obniz logo" width="56px" height="56px" style="max-height: 3rem;">
+<img class="ui mini image portrait only" src="static/logo.svg" alt="obniz logo" width="56px" height="56px" style="max-height: 3rem;">
+</a>`;
+
+    var div = document.createElement('div');
+    div.innerHTML = html;
+    div.firstChild.addEventListener("click", changeObnizId, true);
+    target.insertBefore(div.firstChild, target.firstChild);
+
+
+}
 
 function onObnizIdDone() {
     var obnizId = (<any>document.getElementById("obniz_id")).value;
@@ -165,6 +192,13 @@ function addClickEvents() {
         // obnizMenu.firstChild.addEventListener("click",changeObnizId,true);
         showObnizId.addEventListener("click", changeObnizId, true);
     }
+
+
+    let obnizLogo = document.getElementById("obniz_link");
+    if (obnizLogo) {
+        obnizLogo.addEventListener("click", ()=>{location.href="https://obniz.io"}, true);
+    }
+
 
 }
 

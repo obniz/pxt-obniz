@@ -1,7 +1,7 @@
 {
     "id": "obniz",
-    "name": "MakeCode obniz",
-    "title": "Microsoft MakeCode for obniz",
+    "name": "obniz block programming",
+    "title": "obniz block programming",
     "corepkg": "core",
     "cloud": {
         "workspace": false,
@@ -27,18 +27,26 @@
         "isNative": false
     },
     "appTheme": {
-        "logoUrl": "https://github.com/Microsoft/pxt-sample",
+        "accentColor": "#0CB3D7",
+        "logoUrl": "https://obniz.io",
+
+        "selectLanguage": true,
+        "logo": "./logo.svg",
+        "portraitLogo": "./logo.svg",
+        "footerLogo": "./logo.svg",
+        "docsLogo": "./logo.svg",
         "homeUrl": "https://obniz.io/makecode/",
         "privacyUrl": "https://go.microsoft.com/fwlink/?LinkId=521839",
         "termsOfUseUrl": "https://go.microsoft.com/fwlink/?LinkID=206977",
+        "githubUrl": "https://github.com/obniz/pxt-obniz",
         "docMenu": [
             {
                 "name": "About",
                 "path": "/about"
             },
             {
-                "name": "Docs",
-                "path": "/docs"
+                "name": "Buy obniz",
+                "path": "https://obniz.io/order"
             }
         ],
         "coloredToolbox": false,

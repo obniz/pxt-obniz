@@ -1,5 +1,16 @@
 # About obniz block programing
 
-Example of editor target for [Microsoft MakeCode](https://makecode.com/).
+Block programing editor of [obniz](https://obniz.io).
+It use editor platform:  [Microsoft MakeCode](https://makecode.com/).
 
-See [GitHub repo](https://github.com/Microsoft/pxt-sample) for details.
+
+
+```blocks
+loops.forever(function () {
+    LED.output(ObnizIo.io0, ObnizIo.io1, true)
+    loops.pause(500)
+    LED.output(ObnizIo.io0, ObnizIo.io1, false)
+    loops.pause(500)
+})
+```
+
