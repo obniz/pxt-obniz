@@ -36,7 +36,12 @@ function getParameterByName(name: string, url: string) {
 }
 
 var href = "";
-function onHrefChanged() {
+
+function onDomChanged() {
+    addChangeObnizIdMenu();
+    showObnizId();
+    addClickEvents();
+    removeRightHeaderSpace();
     if (href !== location.href) {
         console.log("Before:", href);
         console.log("After:", location.href);
@@ -51,73 +56,135 @@ function onHrefChanged() {
     }
 }
 
-function showChangeObnizId(){
+function removeRightHeaderSpace() {
+    let target = document.querySelector('a[aria-label="(undef) Logo"]');
+    if (target) {
+        target.parentNode.removeChild(target);
+    }
+}
+
+function showChangeObnizId() {
+    console.log("showChangeObnizId");
 
     var div = document.createElement('div');
     div.innerHTML = modalHTML;
-    document.body.appendChild(div);
-    div.addEventListener("click",function(e){
-        if((<any>e.target).id === "myModal"){
+    document.querySelector("#allcontent").appendChild(div);
+    div.addEventListener("click", function (e) {
+        if ((<any>e.target).id === "myModal") {
             cancelObnizId();
         }
     });
 }
 
 
-function onObnizIdDone(){
+function onObnizIdDone() {
     var obnizId = (<any>document.getElementById("obniz_id")).value;
-    obnizId  = obnizId.replace( "-" , "" ) ;
-    location.href="index.html?player="+obnizId+"#editor";
+    obnizId = obnizId.replace("-", "");
+    location.href = "index.html?player=" + obnizId + "#editor";
 }
 
-function cancelObnizId(){
+function cancelObnizId() {
     let target = document.getElementById("myModal");
     target.parentNode.removeChild(target);
 }
 
-var observer = new MutationObserver(onHrefChanged);
+var observer = new MutationObserver(onDomChanged);
 observer.observe(document, {childList: true, subtree: true});
 
-
-console.log("LOADING EXTENTIONS");
-window.addEventListener("message", function (msg) {
-    console.log(msg);
-});
-
-function changeObnizId(){
-    location.href='index.html#editor';
+function changeObnizId() {
+    if(location.search.length === 0 ){
+        location.reload();
+    }else{
+        location.href = 'index.html#editor';
+    }
 }
 
-function addChangeObnizIdMenu(){
+function showObnizId() {
+    if (document.getElementById("show_obniz_id")) {
+        return;
+    }
+    let target = document.querySelector("#mainmenu div.right.menu");
+    if (!target) {
+        return;
+    }
+    let obnizId = null;
+    var m = /player=([A-Za-z0-9]+)/i.exec(window.location.href);
+    if (m) {
+        obnizId = m[1];
+        obnizId = obnizId.replace("-", "");
+        obnizId = obnizId.substr(0, 4) + "-" + obnizId.substr(4);
+    } else {
+        obnizId = "not selected"
+    }
+
+    if (typeof this.obnizId !== "string" || this.obnizId.length === 0) {
+        this.obnizId = "obniz id is not selected."
+    }
+
+    let html = `<div title="obniz id" id="show_obniz_id" role="menuitem" aria-haspopup="false" class="ui dropdown icon item logo" tabindex="0">
+<span class="ui text" align="center" style="">obniz ID<br/>${obnizId}</span>
+</div>`;
+    var div = document.createElement('div');
+    div.innerHTML = html;
+    div.firstChild.addEventListener("click", changeObnizId, true);
+    target.insertBefore(div.firstChild, target.firstChild);
+}
+
+function addChangeObnizIdMenu() {
+    if (document.getElementById("open_other_obniz")) {
+        return;
+    }
+    let targetDom = document.querySelector('div.ui.item.link[aria-label="Delete Project"]');
+    if (!targetDom) {
+        return;
+    }
     let html = `<div class="ui item link" role="menuitem" aria-label="Open other obniz" title="Open other obniz" tabindex="-1" id="open_other_obniz">
-    <i class="icon print icon-and-text  " aria-hidden="true" role="presentation"></i><span class="ui text"">Open other obniz</span>
+    <i class="icon exchange icon-and-text" aria-hidden="true" role="presentation"></i><span class="ui text">Open other obniz</span>
     </div>
 `;
 
     var div = document.createElement('div');
     div.innerHTML = html;
-    let targetDom = document.querySelector('div.ui.item.link[aria-label="Delete Project"]');
     targetDom.parentElement.insertBefore(div.firstChild, targetDom);
-    div.firstChild.addEventListener("click",changeObnizId);
+
+    addClickEvents();
+}
+
+function addClickEvents() {
+    let obnizMenu = document.getElementById("open_other_obniz");
+    if (obnizMenu) {
+        // obnizMenu.addEventListener("click",changeObnizId,true);
+        obnizMenu.addEventListener("mousedown", (e) => {
+
+            //todo onclickで対応する
+            changeObnizId();
+        }, false);
+    }
+    let showObnizId = document.getElementById("open_other_obniz");
+    if (showObnizId) {
+        // obnizMenu.firstChild.addEventListener("click",changeObnizId,true);
+        showObnizId.addEventListener("click", changeObnizId, true);
+    }
 
 }
 
-const blocklyToolboxXML = `<xml id="blocklyToolboxDefinition" style="display: none">
-<block type="controls_repeat_ext" gap="8">
-<value name="TIMES">
-    <shadow type="math_number">
-        <field name="NUM">4</field>
-    </shadow>
-</value>
-</block>
-</xml>`;
 
-pxt.editor.initExtensionsAsync = function (opts: pxt.editor.ExtensionOptions): Promise<pxt.editor.ExtensionResult> {
-    console.log("LOADING initExtensionsAsync");
-    const res: pxt.editor.ExtensionResult = {
-        toolboxOptions: {
-            //blocklyXml: blocklyToolboxXML
-        }
-    };
-    return Promise.resolve<pxt.editor.ExtensionResult>(res);
-};
+// const blocklyToolboxXML = `<xml id="blocklyToolboxDefinition" style="display: none">
+// <block type="controls_repeat_ext" gap="8">
+// <value name="TIMES">
+//     <shadow type="math_number">
+//         <field name="NUM">4</field>
+//     </shadow>
+// </value>
+// </block>
+// </xml>`;
+//
+// pxt.editor.initExtensionsAsync = function (opts: pxt.editor.ExtensionOptions): Promise<pxt.editor.ExtensionResult> {
+//     console.log("LOADING initExtensionsAsync");
+//     const res: pxt.editor.ExtensionResult = {
+//         toolboxOptions: {
+//             //blocklyXml: blocklyToolboxXML
+//         }
+//     };
+//     return Promise.resolve<pxt.editor.ExtensionResult>(res);
+// };

@@ -2,8 +2,7 @@
 /// <reference path="./enums.d.ts"/>
 
 
-
-declare var Obniz:any;
+declare var Obniz: any;
 
 namespace pxsim {
     /**
@@ -16,7 +15,7 @@ namespace pxsim {
     /**
      * Gets the current 'board', eg. program state.
      */
-    export function board() : Board {
+    export function board(): Board {
         return runtime.board as Board;
     }
 
@@ -27,19 +26,19 @@ namespace pxsim {
     export class Board extends pxsim.BaseBoard {
         public bus: EventBus;
         // public element : any;
-        public obniz : any;
-        public cachedObjects : { [key: string]: wiredObject[]; } = {};
-        public obnizId:string;
-        
+        public obniz: any;
+        public cachedObjects: { [key: string]: wiredObject[]; } = {};
+        public obnizId: string;
+
         constructor() {
             super();
             this.bus = new EventBus(runtime);
             // this.element = <any>document.getElementById('target');
             this.obnizId = null;
         }
-        
+
         initAsync(msg: pxsim.SimulatorRunMessage): Promise<void> {
-            if(this.obniz){
+            if (this.obniz) {
                 this.obniz.reset();
                 this.obniz.close();
                 this.obniz = null;
@@ -47,11 +46,18 @@ namespace pxsim {
             this.cachedObjects = {};
             document.body.innerHTML = '<div id="target"><div id="obniz-debug"></div></div>'; // clear children
             // document.body.appendChild(this.element);
-            this.obnizId= msg.options.player;
+            this.obnizId = msg.options.player;
+            if (typeof this.obnizId !== "string" || this.obnizId.length === 0) {
+                this.obnizId = "obniz id is not selected."
+            } else {
+
+                this.obnizId = this.obnizId.replace("-", "");
+                this.obnizId = this.obnizId.substr(0, 4) + "-" + this.obnizId.substr(4);
+            }
             this.obniz = new Obniz(this.obnizId);
 
-            return new Promise((resolve)=>{
-                this.obniz.onconnect = ()=>{
+            return new Promise((resolve) => {
+                this.obniz.onconnect = () => {
                     this.obniz.reset();
                     resolve();
 
@@ -64,9 +70,9 @@ namespace pxsim {
 
         }
 
-        kill(){
+        kill() {
             super.kill();
-            if(this.obniz){
+            if (this.obniz) {
                 this.obniz.reset();
                 this.obniz.close();
                 this.obniz = null;
@@ -75,34 +81,34 @@ namespace pxsim {
         }
 
 
-        wired(module:string, options:{ [key: string]: any;} ) : any{
-            if(this.cachedObjects[module] ){
-                for( let obj of this.cachedObjects[module]){
-                    if(this.optionsEqual(obj.options , options)){
+        wired(module: string, options: { [key: string]: any; }): any {
+            if (this.cachedObjects[module]) {
+                for (let obj of this.cachedObjects[module]) {
+                    if (this.optionsEqual(obj.options, options)) {
                         return obj.target;
                     }
                 }
             }
-            let obj =  this.obniz.wired(module,options);
+            let obj = this.obniz.wired(module, options);
             this.cachedObjects[module] = this.cachedObjects[module] || [];
 
             this.cachedObjects[module].push({
-                target : obj,
+                target: obj,
                 options: options
             });
 
             return obj;
         }
 
-        optionsEqual(obj1:{[key:string]:any}, obj2:{[key:string]:any}) : boolean{
-            for (let key in obj1){
-                if(obj1[key] !== obj2[key]){
+        optionsEqual(obj1: { [key: string]: any }, obj2: { [key: string]: any }): boolean {
+            for (let key in obj1) {
+                if (obj1[key] !== obj2[key]) {
                     return false;
                 }
             }
 
-            for (let key in obj2){
-                if(obj1[key] !== obj2[key]){
+            for (let key in obj2) {
+                if (obj1[key] !== obj2[key]) {
                     return false;
                 }
             }
