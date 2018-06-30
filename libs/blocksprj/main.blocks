@@ -13,7 +13,7 @@
   </block>
   <block type="device_forever" x="338" y="23">
     <statement name="HANDLER">
-      <block type="LED_output">
+      <block type="led_output">
         <field name="anode">ObnizIo.io0</field>
         <field name="cathode">ObnizIo.io1</field>
         <field name="value">true</field>
@@ -25,7 +25,7 @@
               </shadow>
             </value>
             <next>
-              <block type="LED_output">
+              <block type="led_output">
                 <field name="anode">ObnizIo.io0</field>
                 <field name="cathode">ObnizIo.io1</field>
                 <field name="value">false</field>
