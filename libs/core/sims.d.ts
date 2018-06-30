@@ -136,7 +136,9 @@ declare namespace led {
      */
     //% blockId=led_output block="LED (anode pin:%anode , cathod pin: %cathode ) turn %value"
     //% anode.fieldEditor="gridpicker"
+    //% anode.fieldOptions.firstItem_=null
     //% cathode.fieldEditor="gridpicker"
+    //% cathode.fieldOptions.firstItem_=null
     //% value.fieldEditor="toggleyesno"
     //% shim=led::output
     function output(anode: ObnizIo, cathode: ObnizIo, value: boolean): void;
@@ -151,6 +153,37 @@ declare namespace led {
     //% anode.fieldEditor="gridpicker"
     //% cathode.fieldEditor="gridpicker"
     //% shim=led::blink
+    function blink(anode: ObnizIo, cathode: ObnizIo, ms: number): void;
+
+}
+declare namespace LED {
+    /**
+     * LED light
+     * @param anode target io pin, eg: ObnizIo.io0
+     * @param cathode target io pin, eg: ObnizIo.io1
+     * @param value output voltage, eg: true
+     */
+    //% blockId=LED_output block="LED (anode pin:%anode , cathod pin: %cathode ) turn %value"
+    //% anode.fieldEditor="gridpicker"
+    //% anode.fieldOptions.firstItem_=null
+    //% cathode.fieldEditor="gridpicker"
+    //% cathode.fieldOptions.firstItem_=null
+    //% value.fieldEditor="toggleyesno"
+    //% deprecated=true
+    //% shim=LED::output
+    function output(anode: ObnizIo, cathode: ObnizIo, value: boolean): void;
+
+    /**
+     * LED blink
+     * @param anode target io pin, eg: ObnizIo.io0
+     * @param cathode target io pin, eg: ObnizIo.io1
+     * @param ms interval (ms), eg: 500
+     */
+    //% blockId=LED_blink block="LED (anode pin:%anode , cathod pin: %cathode )  blink with interval %ms ms"
+    //% anode.fieldEditor="gridpicker"
+    //% cathode.fieldEditor="gridpicker"
+    //% deprecated=true
+    //% shim=LED::blink
     function blink(anode: ObnizIo, cathode: ObnizIo, ms: number): void;
 
 }

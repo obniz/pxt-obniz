@@ -9,6 +9,7 @@
   "Array.shift|block": "get and remove first value from %list",
   "Array.unshift|block": "%list| insert %value| at beginning",
   "Array|block": "Array",
+  "LED|block": "LED",
   "Math.randomRange|block": "pick random %min|to %limit",
   "Math|block": "Math",
   "ObnizIo.io0|block": "io0",
