@@ -16,6 +16,8 @@ namespace pxsim.button {
                 board().bus.queue(eventId, SwitchEvent.right);
             }else if(value === "left"){
                 board().bus.queue(eventId, SwitchEvent.left);
+            }else if(value === "none"){
+                board().bus.queue(eventId, SwitchEvent.none);
             }
         };
     }

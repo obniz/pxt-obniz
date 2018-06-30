@@ -31,10 +31,10 @@
         "logoUrl": "https://obniz.io",
 
         "selectLanguage": true,
-        "logo": "./logo.svg",
-        "portraitLogo": "./logo.svg",
-        "footerLogo": "./logo.svg",
-        "docsLogo": "./logo.svg",
+        "logo": "./static/logo.svg",
+        "portraitLogo": "./static/logo.svg",
+        "footerLogo": "./static/logo.svg",
+        "docsLogo": "./static/logo.svg",
         "homeUrl": "https://obniz.io/makecode/",
         "privacyUrl": "https://go.microsoft.com/fwlink/?LinkId=521839",
         "termsOfUseUrl": "https://go.microsoft.com/fwlink/?LinkID=206977",
@@ -43,6 +43,10 @@
             {
                 "name": "About",
                 "path": "/about"
+            },
+            {
+                "name": "Lesson Examples",
+                "path": "/lessons"
             },
             {
                 "name": "Buy obniz",

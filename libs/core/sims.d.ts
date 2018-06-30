@@ -127,18 +127,18 @@ declare namespace io {
     function get(pin: ObnizIo): number;
 
 }
-declare namespace LED {
+declare namespace led {
     /**
      * LED light
      * @param anode target io pin, eg: ObnizIo.io0
      * @param cathode target io pin, eg: ObnizIo.io1
      * @param value output voltage, eg: true
      */
-    //% blockId=LED_output block="LED (anode pin:%anode , cathod pin: %cathode ) turn %value"
+    //% blockId=led_output block="LED (anode pin:%anode , cathod pin: %cathode ) turn %value"
     //% anode.fieldEditor="gridpicker"
     //% cathode.fieldEditor="gridpicker"
-    //% value.fieldEditor=toggleonoff
-    //% shim=LED::output
+    //% value.fieldEditor="toggleyesno"
+    //% shim=led::output
     function output(anode: ObnizIo, cathode: ObnizIo, value: boolean): void;
 
     /**
@@ -147,10 +147,10 @@ declare namespace LED {
      * @param cathode target io pin, eg: ObnizIo.io1
      * @param ms interval (ms), eg: 500
      */
-    //% blockId=LED_blink block="LED (anode pin:%anode , cathod pin: %cathode )  blink with interval %ms ms"
+    //% blockId=led_blink block="LED (anode pin:%anode , cathod pin: %cathode )  blink with interval %ms ms"
     //% anode.fieldEditor="gridpicker"
     //% cathode.fieldEditor="gridpicker"
-    //% shim=LED::blink
+    //% shim=led::blink
     function blink(anode: ObnizIo, cathode: ObnizIo, ms: number): void;
 
 }
@@ -275,7 +275,7 @@ declare namespace sensor {
      * @param  signal  pin2 pin, eg: ObnizIo.io2
      * @param  handler
      */
-    //% blockId=sensor_distance_on_change block="on distance (vcc:%gnd, vcc:%vcc, signal:%signal) change"
+    //% blockId=sensor_distance_on_change block="on distance (vcc:%vcc, gnd:%gnd, signal:%signal) change"
     //% vcc.fieldEditor="gridpicker"
     //% gnd.fieldEditor="gridpicker"
     //% signal.fieldEditor="gridpicker"
@@ -290,7 +290,7 @@ declare namespace sensor {
      * @param  signal  pin2 pin, eg: ObnizIo.io2
      *
      */
-    //% blockId=sensor_distance_value block="get distance (vcc:%gnd, vcc:%vcc, signal:%signal) value(mm)"
+    //% blockId=sensor_distance_value block="get distance (vcc:%vcc, gnd:%gnd, signal:%signal) value(mm)"
     //% vcc.fieldEditor="gridpicker"
     //% gnd.fieldEditor="gridpicker"
     //% signal.fieldEditor="gridpicker"

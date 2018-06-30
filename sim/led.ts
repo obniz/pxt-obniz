@@ -1,6 +1,6 @@
 /// <reference path="../libs/core/enums.d.ts"/>
 
-namespace pxsim.LED {
+namespace pxsim.led {
 
     /**
      * LED light
@@ -8,10 +8,10 @@ namespace pxsim.LED {
      * @param cathode target io pin, eg: ObnizIo.io1
      * @param value output voltage, eg: true
      */
-    //% blockId=LED_output block="LED (anode pin:%anode , cathod pin: %cathode ) turn %value"
+    //% blockId=led_output block="LED (anode pin:%anode , cathod pin: %cathode ) turn %value"
     //% anode.fieldEditor="gridpicker"
     //% cathode.fieldEditor="gridpicker"
-    //% value.fieldEditor=toggleonoff
+    //% value.fieldEditor="toggleyesno"
     export function output(anode: ObnizIo, cathode: ObnizIo, value: boolean) {
         if (value) {
             board().wired("LED", {anode, cathode}).on();
@@ -27,7 +27,7 @@ namespace pxsim.LED {
      * @param cathode target io pin, eg: ObnizIo.io1
      * @param ms interval (ms), eg: 500
      */
-    //% blockId=LED_blink block="LED (anode pin:%anode , cathod pin: %cathode )  blink with interval %ms ms"
+    //% blockId=led_blink block="LED (anode pin:%anode , cathod pin: %cathode )  blink with interval %ms ms"
     //% anode.fieldEditor="gridpicker"
     //% cathode.fieldEditor="gridpicker"
     export function blink(anode: ObnizIo, cathode: ObnizIo, ms: number) {

@@ -92,8 +92,8 @@ function addObnizLogo(){
     }
 
     var html = `<a id="obniz_link" aria-label="obniz Logo" role="menuitem" href="https://obniz.io" target="blank" class="ui item logo brand" tabindex="0">
-<img class="ui logo  portrait hide" src="static/logo.svg" alt="obniz logo" width="56px" height="56px" style="max-height: 3rem;">
-<img class="ui mini image portrait only" src="static/logo.svg" alt="obniz logo" width="56px" height="56px" style="max-height: 3rem;">
+<img class="ui logo  portrait hide" src="docs/static/logo.svg" alt="obniz logo" width="56px" height="56px" style="max-height: 3rem;">
+<img class="ui mini image portrait only" src="docs/static/logo.svg" alt="obniz logo" width="56px" height="56px" style="max-height: 3rem;">
 </a>`;
 
     var div = document.createElement('div');

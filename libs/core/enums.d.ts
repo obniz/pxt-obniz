@@ -35,7 +35,8 @@ declare const enum IoInputEvent {
 declare const enum SwitchEvent {
     push,
     right,
-    left
+    left,
+    none
 }
 
 declare const enum ButtonEvent {

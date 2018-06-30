@@ -38,7 +38,7 @@ namespace pxsim.sensor {
     //% pin2.fieldEditor="gridpicker"
     //% group="Potentiometer"
     export function potentiometerValue(pin0:ObnizIo ,pin1:ObnizIo ,pin2:ObnizIo):number {
-        return board().wired("Potentiometer",{pin0, pin1, pin2}).position;
+        return board().wired("Potentiometer",{pin0, pin1, pin2}).position || 0;
     }
 
 
@@ -51,7 +51,7 @@ namespace pxsim.sensor {
      * @param  signal  pin2 pin, eg: ObnizIo.io2
      * @param  handler
      */
-    //% blockId=sensor_distance_on_change block="on distance (vcc:%gnd, vcc:%vcc, signal:%signal) change"
+    //% blockId=sensor_distance_on_change block="on distance (vcc:%vcc, gnd:%gnd, signal:%signal) change"
     //% vcc.fieldEditor="gridpicker"
     //% gnd.fieldEditor="gridpicker"
     //% signal.fieldEditor="gridpicker"
@@ -77,7 +77,7 @@ namespace pxsim.sensor {
      * @param  signal  pin2 pin, eg: ObnizIo.io2
      *
      */
-    //% blockId=sensor_distance_value block="get distance (vcc:%gnd, vcc:%vcc, signal:%signal) value(mm)"
+    //% blockId=sensor_distance_value block="get distance (vcc:%vcc, gnd:%gnd, signal:%signal) value(mm)"
     //% vcc.fieldEditor="gridpicker"
     //% gnd.fieldEditor="gridpicker"
     //% signal.fieldEditor="gridpicker"
