@@ -12,7 +12,7 @@ Here are some fun programs for your @boardname@!
   "cardType": "example"
 }, {
   "name": "Square 2",
-  "description": "TBD",
+  "description": "TBDd",
   "url": "/examples/square2",
   "cardType": "example"
 }]
