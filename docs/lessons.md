@@ -11,7 +11,7 @@
    "description": "Display world wide 'hello'",
    "url":"/lessons/hello",
    "cardType": "example",
-   "imageUrl":"/static/lessons/hello.jpg"
+   "imageUrl":"/makecode/docs/static/lessons/hello.jpg"
  },
   
 {
@@ -19,7 +19,7 @@
    "description": "Use embedded switch.",
    "url":"/lessons/switch",
    "cardType": "example",
-   "imageUrl":"/static/lessons/switch.jpg"
+   "imageUrl":"/makecode/docs/static/lessons/switch.jpg"
  },
   
 {
@@ -27,7 +27,7 @@
    "description": "Turn on LED with obniz embedded Switch.",
    "url":"/lessons/led",
    "cardType": "example",
-   "imageUrl":"/static/lessons/led.jpg"
+   "imageUrl":"/makecode/docs/static/lessons/led.jpg"
  },
   
 {
@@ -35,7 +35,7 @@
    "description": "Rotate DCMotor when embedded switch pushed.",
    "url":"/lessons/dcmotor",
    "cardType": "example",
-   "imageUrl":"/static/lessons/dcmotor.jpg"
+   "imageUrl":"/makecode/docs/static/lessons/dcmotor.jpg"
  },
   
 {
@@ -43,7 +43,7 @@
    "description": "Display potentiometer value.",
    "url":"/lessons/potentiometer",
    "cardType": "example",
-   "imageUrl":"/static/lessons/potentiometer.jpg"
+   "imageUrl":"/makecode/docs/static/lessons/potentiometer.jpg"
  },
   
   
@@ -52,7 +52,7 @@
    "description": "Display distance value.",
    "url":"/lessons/distance",
    "cardType": "example",
-   "imageUrl":"/static/lessons/distance.jpg"
+   "imageUrl":"/makecode/docs/static/lessons/distance.jpg"
  },
   
 {
@@ -60,7 +60,7 @@
    "description": "Control servo motor angle with potentiometer.",
    "url":"/lessons/servo",
    "cardType": "example",
-   "imageUrl":"/static/lessons/servomotor.jpg"
+   "imageUrl":"/makecode/docs/static/lessons/servomotor.jpg"
  }
   ]
 ```
