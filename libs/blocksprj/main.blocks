@@ -1,6 +1,6 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
   <variables></variables>
-  <block type="pxt-on-start" x="22" y="23">
+  <block type="pxt-on-start" x="0" y="0">
     <statement name="HANDLER">
       <block type="display_print_text">
         <value name="text">
@@ -11,12 +11,16 @@
       </block>
     </statement>
   </block>
-  <block type="device_forever" x="338" y="23">
+  <block type="device_forever" x="316" y="0">
     <statement name="HANDLER">
       <block type="led_output">
         <field name="anode">ObnizIo.io0</field>
         <field name="cathode">ObnizIo.io1</field>
-        <field name="value">true</field>
+        <value name="value">
+          <shadow type="toggleOnOff">
+            <field name="on">true</field>
+          </shadow>
+        </value>
         <next>
           <block type="device_pause">
             <value name="pause">
@@ -28,7 +32,11 @@
               <block type="led_output">
                 <field name="anode">ObnizIo.io0</field>
                 <field name="cathode">ObnizIo.io1</field>
-                <field name="value">false</field>
+                <value name="value">
+                  <shadow type="toggleOnOff">
+                    <field name="on">false</field>
+                  </shadow>
+                </value>
                 <next>
                   <block type="device_pause">
                     <value name="pause">
