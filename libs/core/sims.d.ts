@@ -4,7 +4,7 @@ declare namespace loops {
      * Repeats the code forever in the background. On each iteration, allows other code to run.
      * @param body the code to repeat
      */
-    //% help=functions/forever
+    //% help=functions/forever  afterOnStart=true blockAllowMultiple=1
     //% blockId=device_forever block="forever"
     //% shim=loops::foreverAsync promise
     function forever(body: () => void): void;
@@ -15,6 +15,7 @@ declare namespace loops {
      */
     //% help=functions/pause weight=54
     //% block="pause (ms) %pause" blockId=device_pause
+    //% weight=100
     //% shim=loops::pauseAsync promise
     function pause(ms: number): void;
 
@@ -134,12 +135,9 @@ declare namespace led {
      * @param cathode target io pin, eg: ObnizIo.io1
      * @param value output voltage, eg: true
      */
-    //% blockId=led_output block="LED (anode pin:%anode , cathod pin: %cathode ) turn %value"
+    //% blockId=led_output block="LED (anode pin: %anode , cathod pin: %cathode ) turn %value=toggleOnOff"
     //% anode.fieldEditor="gridpicker"
-    //% anode.fieldOptions.firstItem_=null
     //% cathode.fieldEditor="gridpicker"
-    //% cathode.fieldOptions.firstItem_=null
-    //% value.fieldEditor="toggleyesno"
     //% shim=led::output
     function output(anode: ObnizIo, cathode: ObnizIo, value: boolean): void;
 
@@ -149,7 +147,7 @@ declare namespace led {
      * @param cathode target io pin, eg: ObnizIo.io1
      * @param ms interval (ms), eg: 500
      */
-    //% blockId=led_blink block="LED (anode pin:%anode , cathod pin: %cathode )  blink with interval %ms ms"
+    //% blockId=led_blink block="LED (anode pin: %anode , cathod pin: %cathode )  blink with interval %ms ms"
     //% anode.fieldEditor="gridpicker"
     //% cathode.fieldEditor="gridpicker"
     //% shim=led::blink
@@ -165,10 +163,8 @@ declare namespace LED {
      */
     //% blockId=LED_output block="LED (anode pin:%anode , cathod pin: %cathode ) turn %value"
     //% anode.fieldEditor="gridpicker"
-    //% anode.fieldOptions.firstItem_=null
     //% cathode.fieldEditor="gridpicker"
-    //% cathode.fieldOptions.firstItem_=null
-    //% value.fieldEditor="toggleyesno"
+    //% value.fieldEditor="toggleonoff"
     //% deprecated=true
     //% shim=LED::output
     function output(anode: ObnizIo, cathode: ObnizIo, value: boolean): void;
