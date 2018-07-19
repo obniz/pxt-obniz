@@ -8,6 +8,9 @@
     "PXT",
     "obniz"
   ],
+  "scripts": {
+    "staticpkg" : "pxt staticpkg --route makecode"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/obniz/pxt-obniz.git"
